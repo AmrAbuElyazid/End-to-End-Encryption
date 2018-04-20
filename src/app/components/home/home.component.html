@@ -1,0 +1,56 @@
+<!--
+
+Follow me on
+Dribbble: https://dribbble.com/supahfunk
+Twitter: https://twitter.com/supahfunk
+Codepen: https://codepen.io/supah/
+
+It's just a concept, a fake chat to design a new daily UI for direct messaging.
+Hope you like it :)
+
+-->
+
+<div class="bg">
+	<div class="chat one">
+
+		<div class="messages">
+		    <div class="messages-content" #chat>
+		        <div *ngFor="let msg of messages1" [attr.class]="msg.personal ? 'message new message-personal' : 'message new'">
+		            {{msg.text}}
+		            <div class="timestamp">{{msg.time}}</div>
+		        </div>
+		    </div>
+		</div>
+	  <div class="message-box">
+	    <input [(ngModel)]="msg1" type="text" class="message-input" placeholder="Type message...">
+	    <button (click)="addMessage(1, 2)" type="submit" class="message-submit">Send</button>
+	  </div>
+	</div>
+
+	<div class="chat two">
+
+		<div class="messages">
+		    <div class="messages-content" #chat>
+		        <div *ngFor="let msg of messages2" [attr.class]="msg.personal ? 'message new message-personal' : 'message new bgAnime'">
+		            {{msg.text}}
+		            <div class="timestamp">{{msg.time}}</div>
+		        </div>
+		    </div>
+		</div>
+	  <div class="message-box">
+	    <input [(ngModel)]="msg2" type="text" class="message-input" placeholder="Type message...">
+	    <button (click)="addMessage(2, 1)" type="submit" class="message-submit">Send</button>
+	  </div>
+	</div>
+
+	<div class="progress-area animate" *ngIf="sending">
+		<div class="prog">
+			<div id="bar" [style.transition]="progTransition" [style.width]="progress" class="bar"></div>
+		</div>
+		<div class="steps">
+			<p [innerHTML]="client"></p>
+			<p [innerHTML]="step"></p>
+		</div>
+	</div>
+</div>
+
